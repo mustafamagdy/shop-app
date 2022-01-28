@@ -41,9 +41,12 @@ class ProductList extends StatelessWidget {
                     ),
                     child: Padding(
                       padding: const EdgeInsets.all(kDefaultPadding),
-                      child: Image.asset(
-                        product.image,
-                        fit: BoxFit.cover,
+                      child: Hero(
+                        tag: '${product.id}',
+                        child: Image.asset(
+                          product.image,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),

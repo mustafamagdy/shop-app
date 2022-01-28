@@ -232,9 +232,12 @@ class _DetailsScreenState extends State<DetailsScreen> {
       child: SizedBox(
           width: 250,
           height: 280,
-          child: Image.asset(
-            widget.product.image,
-            fit: BoxFit.cover,
+          child: Hero(
+            tag: '${widget.product.id}',
+            child: Image.asset(
+              widget.product.image,
+              fit: BoxFit.cover,
+            ),
           )),
     );
   }

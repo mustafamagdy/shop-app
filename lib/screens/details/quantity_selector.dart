@@ -16,28 +16,38 @@ class QuantitySelector extends StatefulWidget {
 }
 
 class _QuantitySelectorState extends State<QuantitySelector> {
+  var quantity = 1;
   @override
   Widget build(BuildContext context) {
     final color = kTextColor.withOpacity(0.4);
     return Row(
       children: [
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
-          margin: const EdgeInsets.only(right: 10),
-          width: 40,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            border: Border.fromBorderSide(
-              BorderSide(color: color, width: 1),
+        InkWell(
+          onTap: () {
+            setState(() {
+              if (quantity > 1) {
+                quantity -= 1;
+              }
+            });
+          },
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+            margin: const EdgeInsets.only(right: 10),
+            width: 40,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              border: Border.fromBorderSide(
+                BorderSide(color: color, width: 1),
+              ),
             ),
+            child: Icon(Icons.remove, color: color),
           ),
-          child: Icon(Icons.remove, color: color),
         ),
         Container(
           margin: const EdgeInsets.only(right: 10),
           child: Center(
             child: Text(
-              '01',
+              '$quantity',
               style: TextStyle(
                 color: color,
                 fontSize: 24,
@@ -46,17 +56,26 @@ class _QuantitySelectorState extends State<QuantitySelector> {
             ),
           ),
         ),
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
-          margin: const EdgeInsets.only(right: 10),
-          width: 40,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            border: Border.fromBorderSide(
-              BorderSide(color: color, width: 1),
+        InkWell(
+          onTap: () {
+            setState(() {
+              if (quantity < 10) {
+                quantity += 1;
+              }
+            });
+          },
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+            margin: const EdgeInsets.only(right: 10),
+            width: 40,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              border: Border.fromBorderSide(
+                BorderSide(color: color, width: 1),
+              ),
             ),
+            child: Icon(Icons.add, color: color),
           ),
-          child: Icon(Icons.add, color: color),
         ),
       ],
     );

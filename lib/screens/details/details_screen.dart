@@ -89,61 +89,68 @@ class _DetailsScreenState extends State<DetailsScreen> {
             topRight: Radius.circular(20),
           ),
         ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-          child: Column(
-            children: [
-              const SizedBox(height: kDefaultPadding * 5),
-              Row(
-                children: [
-                  _productColors(),
-                  const Spacer(),
-                  _productSize(),
-                  const Spacer()
-                ],
-              ),
-              const SizedBox(height: kDefaultPadding * 2),
-              Text(
-                widget.product.description,
-                softWrap: true,
-                style: TextStyle(
-                  color: kTextColor.withOpacity(0.7),
-                  height: 1.5,
-                  fontWeight: FontWeight.w500,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+            child: Column(
+              children: [
+                const SizedBox(height: kDefaultPadding * 3),
+                Row(
+                  children: [
+                    _productColors(),
+                    const Spacer(),
+                    _productSize(),
+                    const Spacer()
+                  ],
                 ),
-              ),
-              const SizedBox(height: kDefaultPadding * 2),
-              Row(
-                children: [
-                  QuantitySelector(onQtyUpdate: (qty) {}),
-                  const Spacer(),
-                  FavoriteToggle(onToggle: (isFavorite) {})
-                ],
-              ),
-              const SizedBox(height: kDefaultPadding * 2),
-              Row(
-                children: [
-                  Flexible(
-                    flex: 1,
-                    child: AppButton(
-                      icon: Icons.shopping_cart_outlined,
-                      color: productColor!,
-                      shallow: true,
-                      onPress: () {},
+                const SizedBox(height: kDefaultPadding),
+                SizedBox(
+                  height: 70,
+                  child: SingleChildScrollView(
+                    child: Text(
+                      widget.product.description,
+                      softWrap: true,
+                      style: TextStyle(
+                        color: kTextColor.withOpacity(0.7),
+                        height: 1.5,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
-                  const SizedBox(width: kDefaultPadding),
-                  Flexible(
-                    flex: 5,
-                    child: AppButton(
-                      text: 'BUY NOW',
-                      color: productColor!,
-                      onPress: () {},
+                ),
+                const SizedBox(height: kDefaultPadding),
+                Row(
+                  children: [
+                    QuantitySelector(onQtyUpdate: (qty) {}),
+                    const Spacer(),
+                    FavoriteToggle(onToggle: (isFavorite) {})
+                  ],
+                ),
+                const SizedBox(height: kDefaultPadding),
+                Row(
+                  children: [
+                    Flexible(
+                      flex: 1,
+                      child: AppButton(
+                        icon: Icons.shopping_cart_outlined,
+                        color: productColor!,
+                        shallow: true,
+                        onPress: () {},
+                      ),
                     ),
-                  )
-                ],
-              )
-            ],
+                    const SizedBox(width: kDefaultPadding),
+                    Flexible(
+                      flex: 5,
+                      child: AppButton(
+                        text: 'BUY NOW',
+                        color: productColor!,
+                        onPress: () {},
+                      ),
+                    )
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),
@@ -227,16 +234,16 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
   Widget _productImage(Size size) {
     return Positioned(
-      right: kDefaultPadding - 5,
-      top: 80,
+      right: kDefaultPadding - 20,
+      top: 40,
       child: SizedBox(
           width: 250,
-          height: 280,
+          height: 250,
           child: Hero(
             tag: '${widget.product.id}',
             child: Image.asset(
               widget.product.image,
-              fit: BoxFit.cover,
+              fit: BoxFit.contain,
             ),
           )),
     );

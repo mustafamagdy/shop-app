@@ -45,7 +45,7 @@ class ProductList extends StatelessWidget {
                         tag: '${product.id}',
                         child: Image.asset(
                           product.image,
-                          fit: BoxFit.cover,
+                          fit: BoxFit.fitWidth,
                         ),
                       ),
                     ),
